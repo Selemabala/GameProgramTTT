@@ -24,6 +24,7 @@ namespace GameProgramTTT
         public static int  cellAdded;
         public static int  cellGrid;
         public static char userChoice;
+        public static char[,] grid = new char[3,3];
 
     }
 }
