@@ -3,50 +3,71 @@ namespace GameProgramTTT
 {
     public static class Logic
     {
-        public static bool UserDecisionToPlay()
+
+        /// <summary>
+        /// A method which just returns a statement for welcoming the user 
+        /// </summary>
+        /// <returns>The welcome statement</returns>
+        public static string WelcomeWord()
         {
-            if (Identifiers.userInput == Identifiers.userLowKey || Identifiers.userInput == Identifiers.userUpperKey)
-            {
-                Console.WriteLine("Okay, lets go on");
-                return true;
-            }
-            else
-            {
-                UI.ExitMessage();
-                Environment.Exit(0);
-                return false;
-            }
+            string john = "Hello welcome to play this game.";
+            return john;
+        }
+ 
+
+        /// <summary>
+        /// This method gets userinputer from the keyboard
+        /// </summary>
+        /// <param name="question">The question or statement to get a user input character</param>
+        /// <returns>The character needed from the Question</returns>
+        public static char UserAnswer(string question)
+        {
+            Console.WriteLine(question);
+            char userInput = Console.ReadKey().KeyChar;
+            return userInput;
 
         }
 
-        public static void PlayingLoop()
+
+
+        public static char[,] CreateEmptyGrid()
         {
-            while (!UI.GridIsFull())
+            char[,] grid = new char[3, 3];
+            int cellGrid = 0;
+            int cellAdded = 0;
+            for (cellGrid = 0; cellGrid <= Identifiers.MAX_GRID_INPUT; cellGrid++)
             {
-                if (Identifiers.currentPlayer == Identifiers.human)
+                for (cellAdded = 0; cellAdded <= Identifiers.MAX_GRID_INPUT; cellAdded++)
                 {
-                    UI.AiMove();
+                    grid[cellGrid, cellAdded] = Identifiers.CELL_KEY;
                 }
-                else
-                {
-                    UI.UserRowAndColumnInput();
-                }
-
-                UI.DisplayingWholeGrid();
             }
 
-          
-                UI.WiningStatus();
+            return grid;
         }
 
 
-        public static void LastResults()
+
+        public static bool GridIsFull(char[,] grid)
         {
-            if (UI.GridIsFull())
+            foreach (char cell in grid)
             {
-                UI.WiningStatus();
+                if (cell == Identifiers.CELL_KEY)
+                {
+                    return false;
+
+                }
             }
+            return true;
         }
+
+
+       
+
+
+     
+
+
 
     }
 }

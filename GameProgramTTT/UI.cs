@@ -1,4 +1,5 @@
 ﻿using System;
+using GameProgramTTT;
 using Microsoft.VisualBasic;
 
 namespace GameProgramTTT
@@ -7,40 +8,23 @@ namespace GameProgramTTT
     {
         public static void WelcomeMessage()
         {
-            Console.WriteLine("Hello welcome to play this game.");
+            Console.WriteLine(Logic.WelcomeWord());
             Console.WriteLine($"In this game you will play against an {Identifiers.computerPlay}.");
         }
 
-        public static void DecisionToPlay()
+
+        public static char userInput()
         {
-            Console.WriteLine($"The game will take between {Identifiers.MIN_PLAYING_TIME} to {Identifiers.MAX_PLAYING_TIME} minutes.");
-            Console.WriteLine("Do you wish to play? Press y for yes and any key to exit");
-            Identifiers.userInput = Console.ReadKey().KeyChar;
+            char userInput = Logic.UserAnswer("Do you wish to play? Press y for yes and any key to exit");
             Console.WriteLine();
-
-
-        }
-
-        public static void ExitMessage()
-        {
-            Console.WriteLine("You did not enter the right key, the game will end here");
-
+            return userInput;
         }
 
 
+    
 
-        public static void EmptyCellInGrid()
-        {
-            for (Identifiers.cellGrid = 0; Identifiers.cellGrid <= Identifiers.MAX_GRID_INPUT; Identifiers.cellGrid++)
-            {
-                for (Identifiers.cellAdded = 0; Identifiers.cellAdded <= Identifiers.MAX_GRID_INPUT; Identifiers.cellAdded++)
-                {
-                    Identifiers.grid[Identifiers.cellGrid, Identifiers.cellAdded] = Identifiers.CELL_KEY;
-                }
-            }
-        }
 
-        public static void DisplayingWholeGrid()
+        public static void DisplayingWholeGrid(char[,] john)
         {
 
 
@@ -50,7 +34,7 @@ namespace GameProgramTTT
                 Console.Write($"{Identifiers.GRID_SEPARATOR}");
                 for (int cellInGrid = 0; cellInGrid <= Identifiers.MAX_GRID_INPUT; cellInGrid++)
                 {
-                    Console.Write($"{Identifiers.grid[gridLine, cellInGrid]} {Identifiers.GRID_SEPARATOR}");
+                    Console.Write($"{john[gridLine, cellInGrid]} {Identifiers.GRID_SEPARATOR}");
                 }
                 Console.WriteLine();
                 Console.WriteLine("..........");
@@ -60,58 +44,58 @@ namespace GameProgramTTT
         }
 
 
+        public static void AiStarting()
+        {
+            Console.WriteLine("The AI will start the game");
+        }
+
+        public static void HumanStarting()
+        {
+            Console.WriteLine("You will start the game");
+        }
+
+     
+
+        /// <summary>
+        /// Asks suser who should make the first move
+        /// </summary>
+        /// <returns>true if AI, false if human</returns>
         public static bool GameStarter()
         {
+            
             while (true)
             {
-                Console.WriteLine($"You are given the option to choose who should start the game, press {Identifiers.machine} for AI and  {Identifiers.human} for you");
-                Identifiers.userChoice = Console.ReadKey().KeyChar;
+
+                char userChoice = Logic.UserAnswer($"You are given the option to choose who should start the game, press {Identifiers.machine} for AI and  {Identifiers.human} for you");
                 Console.WriteLine();
-                if (Identifiers.userChoice == Identifiers.human || Identifiers.userChoice == Identifiers.humanLower)
+                if (userChoice == Identifiers.human || userChoice == Identifiers.humanLower)
                 {
-                    Console.WriteLine("You will start the game");
-                    UserRowAndColumnInput();
-                    DisplayingWholeGrid();
-                    return true;
+                    Console.WriteLine("You will start the game");  
+                    return false;
                 }
 
-                if (Identifiers.userChoice == Identifiers.machine || Identifiers.userChoice == Identifiers.machineLower)
+                if (userChoice == Identifiers.machine || userChoice == Identifiers.machineLower)
                 {
                     Console.WriteLine("The AI will start the game");
-                    AiMove();
-                    DisplayingWholeGrid();
                     return true;
                 }
 
-                else
-                {
-                    Console.WriteLine("Enter a valid key");
-                }
+         
+                Console.WriteLine("Enter a valid key");
+                   
+                
             }
 
         }
 
+       
 
-        public static bool GridIsFull()
+
+
+
+
+        public static void WiningStatus(Char[,] grid)
         {
-            
-
-
-            foreach (char cell in Identifiers.grid)
-            {
-                if (cell == Identifiers.CELL_KEY)
-                {
-                    return false;
-
-                }
-            }
-            return true;
-        }
-
-
-        public static void WiningStatus()
-        {
-            EmptyCellInGrid();
             int straightLine;
             int innerValue;
             bool machineHolizontalMatch = false;
@@ -134,35 +118,35 @@ namespace GameProgramTTT
                 int humanDiagnalRightLeft = 0;
                 for (innerValue = 0; innerValue >= Identifiers.MAX_GRID_INPUT; innerValue++)
                 {
-                  
-                    if (Identifiers.machine == Identifiers.grid[straightLine, innerValue])
+
+                    if (Identifiers.machine == grid[straightLine, innerValue])
                     {
 
                         machineHolizontalWin++;
                     }
 
-                    if (Identifiers.human == Identifiers.grid[straightLine, innerValue])
+                    if (Identifiers.human == grid[straightLine, innerValue])
                     {
                         humanHolizontalWin++;
                     }
 
-                    if (Identifiers.machine == Identifiers.grid[innerValue, straightLine])
+                    if (Identifiers.machine == grid[innerValue, straightLine])
                     {
 
                         machineVerticalWin++;
                     }
 
-                    if (Identifiers.human == Identifiers.grid[innerValue, straightLine])
+                    if (Identifiers.human == grid[innerValue, straightLine])
                     {
                         humanVerticalWin++;
                     }
                 }
-                if (machineHolizontalWin==Identifiers.GRID_SIZE)
+                if (machineHolizontalWin == Identifiers.GRID_SIZE)
                 {
                     machineHolizontalMatch = true;
                     Console.WriteLine($"The AI won at row {straightLine}");
                 }
-                if (humanHolizontalWin==Identifiers.GRID_SIZE)
+                if (humanHolizontalWin == Identifiers.GRID_SIZE)
                 {
                     humanHolizontalMatch = true;
                     Console.WriteLine($"You won at row {straightLine}");
@@ -180,7 +164,7 @@ namespace GameProgramTTT
                 }
 
                 //diagnal Values
-                if (Identifiers.machine == Identifiers.grid[straightLine, straightLine])
+                if (Identifiers.machine == grid[straightLine, straightLine])
                 {
 
                     machineDiagnalWin++;
@@ -192,11 +176,11 @@ namespace GameProgramTTT
                     }
                 }
 
-                if (Identifiers.human == Identifiers.grid[straightLine, straightLine])
+                if (Identifiers.human == grid[straightLine, straightLine])
                 {
                     humanDiagnalWin++;
 
-                    if (humanDiagnalWin==Identifiers.GRID_SIZE)
+                    if (humanDiagnalWin == Identifiers.GRID_SIZE)
                     {
                         humandiagnalWinLeftRight = true;
                         Console.WriteLine("You won diagnal values");
@@ -204,7 +188,7 @@ namespace GameProgramTTT
                 }
 
 
-                if (Identifiers.machine == Identifiers.grid[straightLine, Identifiers.MAX_GRID_INPUT- straightLine])
+                if (Identifiers.machine == grid[straightLine, Identifiers.MAX_GRID_INPUT - straightLine])
                 {
 
                     machineDiagnalRightLeft++;
@@ -216,7 +200,7 @@ namespace GameProgramTTT
                     }
                 }
 
-                if (Identifiers.human == Identifiers.grid[straightLine, Identifiers.MAX_GRID_INPUT - straightLine])
+                if (Identifiers.human == grid[straightLine, Identifiers.MAX_GRID_INPUT - straightLine])
                 {
                     humanDiagnalRightLeft++;
 
@@ -243,13 +227,17 @@ namespace GameProgramTTT
 
         }
 
-
-        public static bool UserRowAndColumnInput()
+        /// <summary>
+        /// Method to get 2 numbers/coordinates from user where the user wants to place his symbol if the posisiton is valid
+        /// </summary>
+        /// <param name="gridValue">playing grid to be checked for valid placement</param>
+        /// <returns>list of 2 selected numbers</returns>
+        public static void UserRowAndColumnInput(char[,] gridValue)
 
         {
             int row;
             int col;
-   
+            
             Console.WriteLine();
             Console.WriteLine("Your move");
             while (true)
@@ -291,12 +279,12 @@ namespace GameProgramTTT
                     }
                 }
 
-                if (Identifiers.grid[row, col] == Identifiers.CELL_KEY)
+                if (gridValue[row, col] == Identifiers.CELL_KEY)
 
                 {
-                    Identifiers.grid[row, col] = Identifiers.human;
-                    Identifiers.currentPlayer = Identifiers.human;
-                    return true;
+                
+                    gridValue[row, col]=Identifiers.human;
+                    return;
                 }
 
 
@@ -311,11 +299,11 @@ namespace GameProgramTTT
 
 
 
-        public static void AiMove()
+        public static void AiMove(Char[,]aivalues)
         {
             Random random = new Random();
-            int row;
-            int col;
+            int row=0;
+            int col=0;
             bool correctMove = false;
             Console.WriteLine();
             Console.WriteLine("The AI move");
@@ -323,15 +311,18 @@ namespace GameProgramTTT
             {
                 row = random.Next(0, Identifiers.GRID_SIZE);
                 col = random.Next(0, Identifiers.GRID_SIZE);
-                if (Identifiers.grid[row, col] == Identifiers.CELL_KEY)
+                if (aivalues[row, col] == Identifiers.CELL_KEY)
                 {
-                    Identifiers.grid[row, col] = Identifiers.machine;
+                    aivalues[row, col] = Identifiers.machine;
                     correctMove = true;
-                    Identifiers.currentPlayer = Identifiers.machine;
+                    return;
                 }
             }
+            
         }
 
     }
 }
+
+
 
