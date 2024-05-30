@@ -3,7 +3,6 @@ namespace GameProgramTTT
 {
     public static class Logic
     {
-
         /// <summary>
         /// A method which just returns a statement for welcoming the user 
         /// </summary>
@@ -13,7 +12,6 @@ namespace GameProgramTTT
             string john = "Hello welcome to play this game.";
             return john;
         }
- 
 
         /// <summary>
         /// This method gets userinputer from the keyboard
@@ -28,8 +26,10 @@ namespace GameProgramTTT
 
         }
 
-
-
+        /// <summary>
+        /// A method which creates an empty Grid of 3 x 3
+        /// </summary>
+        /// <returns> the 3x3 grid</returns>
         public static char[,] CreateEmptyGrid()
         {
             char[,] grid = new char[3, 3];
@@ -46,8 +46,11 @@ namespace GameProgramTTT
             return grid;
         }
 
-
-
+        /// <summary>
+        /// This method checks if the grid is full or not. If the grid is not full and no winner then the game will keep on being played
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <returns>it returns a boolen true for a full grid or false if there are still spaces in the grid</returns>
         public static bool GridIsFull(char[,] grid)
         {
             foreach (char cell in grid)
@@ -60,14 +63,6 @@ namespace GameProgramTTT
             }
             return true;
         }
-
-
-       
-
-
-     
-
-
 
     }
 }

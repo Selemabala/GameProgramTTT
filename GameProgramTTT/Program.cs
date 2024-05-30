@@ -10,15 +10,13 @@ class Program
         char[,] grid = new char[3, 3];
         bool play = false; ;
 
-
-
         UI.WelcomeMessage();
 
         Console.WriteLine($"The game will take between {Identifiers.MIN_PLAYING_TIME} to {Identifiers.MAX_PLAYING_TIME} minutes.");
         char userInput = UI.userInput();
 
 
-        if (userInput == Identifiers.userLowKey || userInput== Identifiers.userUpperKey)
+        if (userInput == Identifiers.userLowKey || userInput == Identifiers.userUpperKey)
         {
 
             play = true;
@@ -48,8 +46,6 @@ class Program
         UI.DisplayingWholeGrid(grid);
 
 
-
-
         bool AIisStarting = UI.GameStarter();
 
         if (AIisStarting == false)
@@ -61,33 +57,42 @@ class Program
             nextPlayer = Identifiers.machine;
         }
 
-
-
-
-        while (true)
+        bool results= UI.WiningStatus(grid);
+        while (!results)
         {
             if (nextPlayer == Identifiers.human)
             {
                 UI.UserRowAndColumnInput(grid);
                 nextPlayer = Identifiers.machine;
+                UI.WiningStatus(grid);
+                if (UI.WiningStatus(grid)==true)
+                {
+                    break;
+                }
             }
             else
             {
                 UI.AiMove(grid);
                 nextPlayer = Identifiers.human;
+                UI.WiningStatus(grid);
+                if (UI.WiningStatus(grid)==true)
+                {
+                    break;
+                }
             }
 
             UI.DisplayingWholeGrid(grid);
 
             bool fullGrid = Logic.GridIsFull(grid);
-            if (fullGrid == true)
+            if (fullGrid)
             {
                 Console.WriteLine("The grid is full, and the result is...");
+                Console.WriteLine("It is a tie");  
                 break;
             }
         }
 
-        UI.WiningStatus(grid);
+        Console.WriteLine("Thank you for playing");
 
     }
 }
