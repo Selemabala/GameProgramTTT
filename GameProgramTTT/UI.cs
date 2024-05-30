@@ -12,7 +12,7 @@ namespace GameProgramTTT
         public static void WelcomeMessage()
         {
             Console.WriteLine(Logic.WelcomeWord());
-            Console.WriteLine($"In this game you will play against an {Identifiers.computerPlay}.");
+            Console.WriteLine($"In this game you will play against an {Identifiers.COMPUTER_PLAY}.");
         }
 
         /// <summary>
@@ -24,6 +24,39 @@ namespace GameProgramTTT
             char userInput = Logic.UserAnswer("Do you wish to play? Press y for yes and any key to exit");
             Console.WriteLine();
             return userInput;
+        }
+
+        /// <summary>
+        /// A statement informing the user regarding the expected duration of the game
+        /// </summary>
+        public static void Gametime()
+        {
+            Console.WriteLine($"The game will take between {Identifiers.MIN_PLAYING_TIME} to {Identifiers.MAX_PLAYING_TIME} minutes.");
+        }
+
+        /// <summary>
+        /// A statement to inform the user that the game ends now
+        /// </summary>
+        public static void GameEnd()
+        {
+            Console.WriteLine("The game will end here");
+        }
+
+        /// <summary>
+        /// A statement to inform the user that the game is full and there is no winner
+        /// </summary>
+        public static void NoWinnerResults()
+        {
+            Console.WriteLine("The grid is full, and the result is...");
+            Console.WriteLine("It is a tie");
+        }
+
+        /// <summary>
+        /// A statement to inform the user that the game ends now and thanks for playig
+        /// </summary>
+        public static void GameLastStatement()
+        {
+            Console.WriteLine("Thank you for playing");
         }
 
         /// <summary>
@@ -45,16 +78,6 @@ namespace GameProgramTTT
             }
 
         }
-
-        public static void AiStarting()
-        {
-            Console.WriteLine("The AI will start the game");
-        }
-
-        public static void HumanStarting()
-        {
-            Console.WriteLine("You will start the game");
-        }
         /// <summary>
         /// Asks suser who should make the first move
         /// </summary>
@@ -63,15 +86,15 @@ namespace GameProgramTTT
         {
             while (true)
             {
-                char userChoice = Logic.UserAnswer($"You are given the option to choose who should start the game, press {Identifiers.machine} for AI and  {Identifiers.human} for you");
+                char userChoice = Logic.UserAnswer($"You are given the option to choose who should start the game, press {Identifiers.MACHINE} for AI and  {Identifiers.HUMAN} for you");
                 Console.WriteLine();
-                if (userChoice == Identifiers.human || userChoice == Identifiers.humanLower)
+                if (userChoice == Identifiers.HUMAN || userChoice == Identifiers.HUMANLOWER)
                 {
                     Console.WriteLine("You will start the game");
                     return false;
                 }
 
-                if (userChoice == Identifiers.machine || userChoice == Identifiers.machineLower)
+                if (userChoice == Identifiers.MACHINE || userChoice == Identifiers.MACHINELOWER)
                 {
                     Console.WriteLine("The AI will start the game");
                     return true;
@@ -89,41 +112,43 @@ namespace GameProgramTTT
         {
             int straightLine;
             int innerValue;
+            int machineDiagnalWin = 0;
+            int humanDiagnalWin = 0;
+            int machineDiagnalRightLeft = 0;
+            int humanDiagnalRightLeft = 0;
             for (straightLine = 0; straightLine <= Identifiers.MAX_GRID_INPUT; straightLine++)
             {
                 int machineHolizontalWin = 0;
                 int humanHolizontalWin = 0;
                 int machineVerticalWin = 0;
                 int humanVerticalWin = 0;
-                int machineDiagnalWin = 0;
-                int humanDiagnalWin = 0;
-                int machineDiagnalRightLeft = 0;
-                int humanDiagnalRightLeft = 0;
                 for (innerValue = 0; innerValue <= Identifiers.MAX_GRID_INPUT; innerValue++)
                 {
 
-                    if (Identifiers.machine == grid[straightLine, innerValue])
+                    if (Identifiers.MACHINE == grid[straightLine, innerValue])
                     {
 
                         machineHolizontalWin++;
                     }
 
-                    if (Identifiers.human == grid[straightLine, innerValue])
+                    if (Identifiers.HUMAN == grid[straightLine, innerValue])
                     {
                         humanHolizontalWin++;
                     }
 
-                    if (Identifiers.machine == grid[innerValue, straightLine])
+                    if (Identifiers.MACHINE == grid[innerValue, straightLine])
                     {
 
                         machineVerticalWin++;
                     }
 
-                    if (Identifiers.human == grid[innerValue, straightLine])
+                    if (Identifiers.HUMAN == grid[innerValue, straightLine])
                     {
                         humanVerticalWin++;
                     }
                 }
+
+
                 if (machineHolizontalWin == Identifiers.GRID_SIZE)
                 {
                     Console.WriteLine($"The AI won at row {straightLine}");
@@ -132,8 +157,8 @@ namespace GameProgramTTT
                 if (humanHolizontalWin == Identifiers.GRID_SIZE)
                 {
                     Console.WriteLine($"You won at row {straightLine}");
-                    return  true;
-                   
+                    return true;
+
                 }
 
                 if (machineVerticalWin == Identifiers.GRID_SIZE)
@@ -148,7 +173,7 @@ namespace GameProgramTTT
                 }
 
                 //diagnal Values
-                if (Identifiers.machine == grid[straightLine, straightLine])
+                if (Identifiers.MACHINE == grid[straightLine, straightLine])
                 {
 
                     machineDiagnalWin++;
@@ -160,7 +185,7 @@ namespace GameProgramTTT
                     }
                 }
 
-                if (Identifiers.human == grid[straightLine, straightLine])
+                if (Identifiers.HUMAN == grid[straightLine, straightLine])
                 {
                     humanDiagnalWin++;
 
@@ -171,7 +196,7 @@ namespace GameProgramTTT
                     }
                 }
 
-                if (Identifiers.machine == grid[straightLine, Identifiers.MAX_GRID_INPUT - straightLine])
+                if (Identifiers.MACHINE == grid[straightLine, Identifiers.MAX_GRID_INPUT - straightLine])
                 {
 
                     machineDiagnalRightLeft++;
@@ -183,7 +208,7 @@ namespace GameProgramTTT
                     }
                 }
 
-                if (Identifiers.human == grid[straightLine, Identifiers.MAX_GRID_INPUT - straightLine])
+                if (Identifiers.HUMAN == grid[straightLine, Identifiers.MAX_GRID_INPUT - straightLine])
                 {
                     humanDiagnalRightLeft++;
 
@@ -193,7 +218,7 @@ namespace GameProgramTTT
                         return true;
                     }
                 }
-                
+
             }
             return false;
         }
@@ -248,7 +273,7 @@ namespace GameProgramTTT
                 if (gridValue[row, col] == Identifiers.CELL_KEY)
 
                 {
-                    gridValue[row, col] = Identifiers.human;
+                    gridValue[row, col] = Identifiers.HUMAN;
                     return;
                 }
                 else
@@ -258,6 +283,10 @@ namespace GameProgramTTT
             }
         }
 
+        /// <summary>
+        /// The AI will check where there is empty space and place the A letter
+        /// </summary>
+        /// <param name="aivalues"> this will be the existing grid</param>
         public static void AiMove(Char[,] aivalues)
         {
             Random random = new Random();
@@ -272,7 +301,7 @@ namespace GameProgramTTT
                 col = random.Next(0, Identifiers.GRID_SIZE);
                 if (aivalues[row, col] == Identifiers.CELL_KEY)
                 {
-                    aivalues[row, col] = Identifiers.machine;
+                    aivalues[row, col] = Identifiers.MACHINE;
                     correctMove = true;
                     return;
                 }

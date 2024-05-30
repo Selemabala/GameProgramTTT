@@ -32,7 +32,7 @@ namespace GameProgramTTT
         /// <returns> the 3x3 grid</returns>
         public static char[,] CreateEmptyGrid()
         {
-            char[,] grid = new char[3, 3];
+            char[,] grid = new char[Identifiers.GRID_SIZE, Identifiers.GRID_SIZE];
             int cellGrid = 0;
             int cellAdded = 0;
             for (cellGrid = 0; cellGrid <= Identifiers.MAX_GRID_INPUT; cellGrid++)

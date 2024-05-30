@@ -7,16 +7,14 @@ class Program
     static void Main(string[] args)
     {
         char nextPlayer;
-        char[,] grid = new char[3, 3];
+        char[,] grid = new char[Identifiers.GRID_SIZE, Identifiers.GRID_SIZE];
         bool play = false; ;
 
         UI.WelcomeMessage();
-
-        Console.WriteLine($"The game will take between {Identifiers.MIN_PLAYING_TIME} to {Identifiers.MAX_PLAYING_TIME} minutes.");
+        UI.Gametime();
         char userInput = UI.userInput();
 
-
-        if (userInput == Identifiers.userLowKey || userInput == Identifiers.userUpperKey)
+        if (userInput == Identifiers.USERLOWERKEY || userInput == Identifiers.USERUPERKEY)
         {
 
             play = true;
@@ -30,9 +28,9 @@ class Program
         bool continuePlaying;
         continuePlaying = play;
 
-        if (continuePlaying == false)
+        if (!continuePlaying)
         {
-            Console.WriteLine("The game will end ");
+            UI.GameEnd();
             Environment.Exit(0);
         }
         else
@@ -50,22 +48,23 @@ class Program
 
         if (AIisStarting == false)
         {
-            nextPlayer = Identifiers.human;
+            nextPlayer = Identifiers.HUMAN;
         }
         else
         {
-            nextPlayer = Identifiers.machine;
+            nextPlayer = Identifiers.MACHINE;
         }
 
-        bool results= UI.WiningStatus(grid);
+        bool results = UI.WiningStatus(grid);
         while (!results)
         {
-            if (nextPlayer == Identifiers.human)
+            if (nextPlayer == Identifiers.HUMAN)
             {
                 UI.UserRowAndColumnInput(grid);
-                nextPlayer = Identifiers.machine;
+                nextPlayer = Identifiers.MACHINE;
                 UI.WiningStatus(grid);
-                if (UI.WiningStatus(grid)==true)
+                UI.DisplayingWholeGrid(grid);
+                if (UI.WiningStatus(grid))
                 {
                     break;
                 }
@@ -73,26 +72,24 @@ class Program
             else
             {
                 UI.AiMove(grid);
-                nextPlayer = Identifiers.human;
+                nextPlayer = Identifiers.HUMAN;
                 UI.WiningStatus(grid);
-                if (UI.WiningStatus(grid)==true)
+                UI.DisplayingWholeGrid(grid);
+                if (UI.WiningStatus(grid))
                 {
                     break;
                 }
             }
 
-            UI.DisplayingWholeGrid(grid);
-
             bool fullGrid = Logic.GridIsFull(grid);
             if (fullGrid)
             {
-                Console.WriteLine("The grid is full, and the result is...");
-                Console.WriteLine("It is a tie");  
+                UI.NoWinnerResults();
                 break;
             }
         }
 
-        Console.WriteLine("Thank you for playing");
+        UI.GameLastStatement();
 
     }
 }
