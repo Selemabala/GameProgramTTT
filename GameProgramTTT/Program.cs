@@ -10,9 +10,9 @@ class Program
         char[,] grid = new char[Identifiers.GRID_SIZE, Identifiers.GRID_SIZE];
         bool play = false; ;
 
-        UI.WelcomeMessage();
-        UI.Gametime();
-        char userInput = UI.userInput();
+        UI.ShowWelcomeMessage();
+        UI.DisplayGametime();
+        char userInput = UI.GetuserInput();
 
         if (userInput == Identifiers.USERLOWERKEY || userInput == Identifiers.USERUPERKEY)
         {
@@ -30,7 +30,7 @@ class Program
 
         if (!continuePlaying)
         {
-            UI.GameEnd();
+            UI.InformGameEnding();
             Environment.Exit(0);
         }
         else
@@ -44,7 +44,7 @@ class Program
         UI.DisplayingWholeGrid(grid);
 
 
-        bool AIisStarting = UI.GameStarter();
+        bool AIisStarting = UI.GetGameStarter();
 
         if (AIisStarting == false)
         {
@@ -60,7 +60,7 @@ class Program
         {
             if (nextPlayer == Identifiers.HUMAN)
             {
-                UI.UserRowAndColumnInput(grid);
+                UI.HumanPlaying(grid);
                 nextPlayer = Identifiers.MACHINE;
                 UI.WiningStatus(grid);
                 UI.DisplayingWholeGrid(grid);
@@ -71,7 +71,7 @@ class Program
             }
             else
             {
-                UI.AiMove(grid);
+                UI.AiPlaying(grid);
                 nextPlayer = Identifiers.HUMAN;
                 UI.WiningStatus(grid);
                 UI.DisplayingWholeGrid(grid);
@@ -81,15 +81,15 @@ class Program
                 }
             }
 
-            bool fullGrid = Logic.GridIsFull(grid);
+            bool fullGrid = Logic.DisplayGridIsFull(grid);
             if (fullGrid)
             {
-                UI.NoWinnerResults();
+                UI.ShowTieResults();
                 break;
             }
         }
 
-        UI.GameLastStatement();
+        UI.DisplayLastThanksStatement();
 
     }
 }

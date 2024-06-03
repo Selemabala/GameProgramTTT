@@ -7,7 +7,7 @@ namespace GameProgramTTT
         /// A method which just returns a statement for welcoming the user 
         /// </summary>
         /// <returns>The welcome statement</returns>
-        public static string WelcomeWord()
+        public static string ShowWelcomeWord()
         {
             string john = "Hello welcome to play this game.";
             return john;
@@ -18,7 +18,7 @@ namespace GameProgramTTT
         /// </summary>
         /// <param name="question">The question or statement to get a user input character</param>
         /// <returns>The character needed from the Question</returns>
-        public static char UserAnswer(string question)
+        public static char GetUserAnswer(string question)
         {
             Console.WriteLine(question);
             char userInput = Console.ReadKey().KeyChar;
@@ -51,7 +51,7 @@ namespace GameProgramTTT
         /// </summary>
         /// <param name="grid"></param>
         /// <returns>it returns a boolen true for a full grid or false if there are still spaces in the grid</returns>
-        public static bool GridIsFull(char[,] grid)
+        public static bool DisplayGridIsFull(char[,] grid)
         {
             foreach (char cell in grid)
             {

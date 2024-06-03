@@ -9,9 +9,9 @@ namespace GameProgramTTT
         /// <summary>
         /// This medthod creates and displays a welcome method for the user
         /// </summary>
-        public static void WelcomeMessage()
+        public static void ShowWelcomeMessage()
         {
-            Console.WriteLine(Logic.WelcomeWord());
+            Console.WriteLine(Logic.ShowWelcomeWord());
             Console.WriteLine($"In this game you will play against an {Identifiers.COMPUTER_PLAY}.");
         }
 
@@ -19,9 +19,9 @@ namespace GameProgramTTT
         /// This method is for getting a userinput if the user wants to play or not
         /// </summary>
         /// <returns>The return is the character y for continuing to play or another character to exit</returns>
-        public static char userInput()
+        public static char GetuserInput()
         {
-            char userInput = Logic.UserAnswer("Do you wish to play? Press y for yes and any key to exit");
+            char userInput = Logic.GetUserAnswer("Do you wish to play? Press y for yes and any key to exit");
             Console.WriteLine();
             return userInput;
         }
@@ -29,7 +29,7 @@ namespace GameProgramTTT
         /// <summary>
         /// A statement informing the user regarding the expected duration of the game
         /// </summary>
-        public static void Gametime()
+        public static void DisplayGametime()
         {
             Console.WriteLine($"The game will take between {Identifiers.MIN_PLAYING_TIME} to {Identifiers.MAX_PLAYING_TIME} minutes.");
         }
@@ -37,7 +37,7 @@ namespace GameProgramTTT
         /// <summary>
         /// A statement to inform the user that the game ends now
         /// </summary>
-        public static void GameEnd()
+        public static void InformGameEnding()
         {
             Console.WriteLine("The game will end here");
         }
@@ -45,7 +45,7 @@ namespace GameProgramTTT
         /// <summary>
         /// A statement to inform the user that the game is full and there is no winner
         /// </summary>
-        public static void NoWinnerResults()
+        public static void ShowTieResults()
         {
             Console.WriteLine("The grid is full, and the result is...");
             Console.WriteLine("It is a tie");
@@ -54,7 +54,7 @@ namespace GameProgramTTT
         /// <summary>
         /// A statement to inform the user that the game ends now and thanks for playig
         /// </summary>
-        public static void GameLastStatement()
+        public static void DisplayLastThanksStatement()
         {
             Console.WriteLine("Thank you for playing");
         }
@@ -82,11 +82,11 @@ namespace GameProgramTTT
         /// Asks suser who should make the first move
         /// </summary>
         /// <returns>true if AI, false if human</returns>
-        public static bool GameStarter()
+        public static bool GetGameStarter()
         {
             while (true)
             {
-                char userChoice = Logic.UserAnswer($"You are given the option to choose who should start the game, press {Identifiers.MACHINE} for AI and  {Identifiers.HUMAN} for you");
+                char userChoice = Logic.GetUserAnswer($"You are given the option to choose who should start the game, press {Identifiers.MACHINE} for AI and  {Identifiers.HUMAN} for you");
                 Console.WriteLine();
                 if (userChoice == Identifiers.HUMAN || userChoice == Identifiers.HUMANLOWER)
                 {
@@ -228,7 +228,7 @@ namespace GameProgramTTT
         /// </summary>
         /// <param name="gridValue">playing grid to be checked for valid placement</param>
         /// <returns>list of 2 selected numbers</returns>
-        public static void UserRowAndColumnInput(char[,] gridValue)
+        public static void HumanPlaying(char[,] gridValue)
         {
             int row;
             int col;
@@ -287,7 +287,7 @@ namespace GameProgramTTT
         /// The AI will check where there is empty space and place the A letter
         /// </summary>
         /// <param name="aivalues"> this will be the existing grid</param>
-        public static void AiMove(Char[,] aivalues)
+        public static void AiPlaying(Char[,] aivalues)
         {
             Random random = new Random();
             int row = 0;
