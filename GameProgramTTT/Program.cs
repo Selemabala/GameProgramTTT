@@ -25,10 +25,7 @@ class Program
             play = false;
         }
 
-        bool continuePlaying;
-        continuePlaying = play;
-
-        if (!continuePlaying)
+        if (!play)
         {
             UI.InformGameEnding();
             Environment.Exit(0);
