@@ -82,7 +82,7 @@ namespace GameProgramTTT
         /// Asks suser who should make the first move
         /// </summary>
         /// <returns>true if AI, false if human</returns>
-        public static bool GetGameStarter()
+        public static bool GetGamePlayer()
         {
             while (true)
             {

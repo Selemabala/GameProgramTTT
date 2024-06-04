@@ -41,9 +41,7 @@ class Program
         UI.DisplayingWholeGrid(grid);
 
 
-        bool AIisStarting = UI.GetGameStarter();
-
-        if (AIisStarting == false)
+        if (!UI.GetGamePlayer())
         {
             nextPlayer = Identifiers.HUMAN;
         }
