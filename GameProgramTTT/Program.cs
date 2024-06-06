@@ -50,17 +50,25 @@ class Program
             nextPlayer = Identifiers.MACHINE;
         }
 
-        bool results = UI.WiningStatus(grid);
-        while (!results)
+
+        while (true)
         {
             if (nextPlayer == Identifiers.HUMAN)
             {
                 UI.HumanPlaying(grid);
                 nextPlayer = Identifiers.MACHINE;
-                UI.WiningStatus(grid);
                 UI.DisplayingWholeGrid(grid);
-                if (UI.WiningStatus(grid))
+                Logic.RevealHolizontalWins(grid);
+                if (Logic.RevealHolizontalWins(grid))
                 {
+                    UI.PrintHolizontalWins(grid);
+                    break;
+                }
+
+                Logic.WiningStatusDiagnalValues(grid);
+                if (Logic.WiningStatusDiagnalValues(grid))
+                {
+                    UI.PrintingResultsDiagnalValues(grid);
                     break;
                 }
             }
@@ -68,10 +76,18 @@ class Program
             {
                 UI.AiPlaying(grid);
                 nextPlayer = Identifiers.HUMAN;
-                UI.WiningStatus(grid);
                 UI.DisplayingWholeGrid(grid);
-                if (UI.WiningStatus(grid))
+                Logic.RevealHolizontalWins(grid);
+                if (Logic.RevealHolizontalWins(grid))
                 {
+                    UI.PrintHolizontalWins(grid);
+                    break;
+                }
+
+                Logic.WiningStatusDiagnalValues(grid);
+                if (Logic.WiningStatusDiagnalValues(grid))
+                {
+                    UI.PrintingResultsDiagnalValues(grid);
                     break;
                 }
             }

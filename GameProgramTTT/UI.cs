@@ -105,44 +105,40 @@ namespace GameProgramTTT
         }
 
         /// <summary>
-        /// This method is specifically for displaying the winner. The loop will run and if characters appear 3 times  straight then the winnner is displayed and the method ends.
+        /// The method prints the statement where there is a winner
         /// </summary>
-        /// <param name="grid"> it uses the grid which is created and will be updated in a loop iteration </param>
-        public static bool WiningStatus(Char[,] grid)
+        /// <param name="grid"></param>
+        public static void PrintHolizontalWins(Char[,] grid)
         {
-            int straightLine;
-            int innerValue;
-            int machineDiagnalWin = 0;
-            int humanDiagnalWin = 0;
-            int machineDiagnalRightLeft = 0;
-            int humanDiagnalRightLeft = 0;
-            for (straightLine = 0; straightLine <= Identifiers.MAX_GRID_INPUT; straightLine++)
+            int i;
+            int j;
+            for (i = 0; i <= Identifiers.MAX_GRID_INPUT; i++)
             {
                 int machineHolizontalWin = 0;
                 int humanHolizontalWin = 0;
                 int machineVerticalWin = 0;
                 int humanVerticalWin = 0;
-                for (innerValue = 0; innerValue <= Identifiers.MAX_GRID_INPUT; innerValue++)
+                for (j = 0; j <= Identifiers.MAX_GRID_INPUT; j++)
                 {
 
-                    if (Identifiers.MACHINE == grid[straightLine, innerValue])
+                    if (Identifiers.MACHINE == grid[i, j])
                     {
 
                         machineHolizontalWin++;
                     }
 
-                    if (Identifiers.HUMAN == grid[straightLine, innerValue])
+                    if (Identifiers.HUMAN == grid[i, j])
                     {
                         humanHolizontalWin++;
                     }
 
-                    if (Identifiers.MACHINE == grid[innerValue, straightLine])
+                    if (Identifiers.MACHINE == grid[j, i])
                     {
 
                         machineVerticalWin++;
                     }
 
-                    if (Identifiers.HUMAN == grid[innerValue, straightLine])
+                    if (Identifiers.HUMAN == grid[j, i])
                     {
                         humanVerticalWin++;
                     }
@@ -151,76 +147,85 @@ namespace GameProgramTTT
 
                 if (machineHolizontalWin == Identifiers.GRID_SIZE)
                 {
-                    Console.WriteLine($"The AI won at row {straightLine}");
-                    return true;
+                    Console.WriteLine($"The AI won at row {i}");
+                    return;
                 }
                 if (humanHolizontalWin == Identifiers.GRID_SIZE)
                 {
-                    Console.WriteLine($"You won at row {straightLine}");
-                    return true;
-
+                    Console.WriteLine($"You won at row {i}");
+                    return;
                 }
 
                 if (machineVerticalWin == Identifiers.GRID_SIZE)
                 {
-                    Console.WriteLine($"The AI won at column {straightLine}");
-                    return true;
+                    Console.WriteLine($"The AI won at column {i}");
+                    return;
                 }
                 if (humanVerticalWin == Identifiers.GRID_SIZE)
                 {
-                    Console.WriteLine($"You won at column {straightLine}");
-                    return true;
+                    Console.WriteLine($"You won at column {i}");
+                    return;
                 }
+            }
+        }
 
-                //diagnal Values
-                if (Identifiers.MACHINE == grid[straightLine, straightLine])
+
+        /// <summary>
+        /// This method prints the results where there is a winning
+        /// </summary>
+        /// <param name="grid"></param>
+        public static void PrintingResultsDiagnalValues(Char[,] grid)
+        {
+            int i;
+            int AiMatchingDiagnal = 0;
+            int HumanMatchingDiagnal = 0;
+            int AiMatchingFromRight = 0;
+            int HumanMatchingFromRight = 0;
+            for (i = 0; i <= Identifiers.MAX_GRID_INPUT; i++)
+            {
+                if (Identifiers.MACHINE == grid[i, i])
                 {
 
-                    machineDiagnalWin++;
+                    AiMatchingDiagnal++;
 
-                    if (machineDiagnalWin == Identifiers.GRID_SIZE)
+                    if (AiMatchingDiagnal == Identifiers.GRID_SIZE)
                     {
                         Console.WriteLine("The AI won diagnal values");
-                        return true;
                     }
                 }
 
-                if (Identifiers.HUMAN == grid[straightLine, straightLine])
+                if (Identifiers.HUMAN == grid[i, i])
                 {
-                    humanDiagnalWin++;
+                    HumanMatchingDiagnal++;
 
-                    if (humanDiagnalWin == Identifiers.GRID_SIZE)
+                    if (HumanMatchingDiagnal == Identifiers.GRID_SIZE)
                     {
                         Console.WriteLine("You won diagnal values");
-                        return true;
                     }
                 }
 
-                if (Identifiers.MACHINE == grid[straightLine, Identifiers.MAX_GRID_INPUT - straightLine])
+                if (Identifiers.MACHINE == grid[i, Identifiers.MAX_GRID_INPUT - i])
                 {
 
-                    machineDiagnalRightLeft++;
+                    AiMatchingFromRight++;
 
-                    if (machineDiagnalRightLeft == Identifiers.GRID_SIZE)
+                    if (AiMatchingFromRight == Identifiers.GRID_SIZE)
                     {
                         Console.WriteLine("The AI won right left diagnal values");
-                        return true;
                     }
                 }
 
-                if (Identifiers.HUMAN == grid[straightLine, Identifiers.MAX_GRID_INPUT - straightLine])
+                if (Identifiers.HUMAN == grid[i, Identifiers.MAX_GRID_INPUT - i])
                 {
-                    humanDiagnalRightLeft++;
+                    HumanMatchingFromRight++;
 
-                    if (humanDiagnalRightLeft == Identifiers.GRID_SIZE)
+                    if (HumanMatchingFromRight == Identifiers.GRID_SIZE)
                     {
                         Console.WriteLine("You won right left diagnal values");
-                        return true;
                     }
                 }
 
             }
-            return false;
         }
 
         /// <summary>
