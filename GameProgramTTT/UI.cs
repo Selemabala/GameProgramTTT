@@ -81,13 +81,13 @@ namespace GameProgramTTT
             {
                 char userChoice = Logic.GetUserAnswer($"You are given the option to choose who should start the game, press {Identifiers.MACHINE} for AI and  {Identifiers.HUMAN} for you");
                 Console.WriteLine();
-                if (userChoice == Identifiers.HUMAN || userChoice == Identifiers.HUMANLOWER)
+                if (userChoice == Identifiers.HUMAN || userChoice == Identifiers.HUMAN_LOWER_KEY)
                 {
                     Console.WriteLine("You will start the game");
                     return false;
                 }
 
-                if (userChoice == Identifiers.MACHINE || userChoice == Identifiers.MACHINELOWER)
+                if (userChoice == Identifiers.MACHINE || userChoice == Identifiers.MACHINE_LOWER_KEY)
                 {
                     Console.WriteLine("The AI will start the game");
                     return true;

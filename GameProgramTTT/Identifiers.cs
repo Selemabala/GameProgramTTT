@@ -8,12 +8,12 @@
         public  const string COMPUTER_PLAY = "AI";
         public  const string HUMAN_PLAY = "You";
         public  const int GRID_SIZE = 3;
-        public const char USERLOWERKEY = 'y';
-        public const char USERUPERKEY = 'Y';
+        public const char USER_LOWER_KEY = 'y';
+        public const char USER_UPPER_KEY = 'Y';
         public const char MACHINE = 'A';
-        public const char MACHINELOWER = 'a';
+        public const char MACHINE_LOWER_KEY = 'a';
         public const char HUMAN = 'H';
-        public const char HUMANLOWER = 'h';
+        public const char HUMAN_LOWER_KEY = 'h';
         public const char CELL_KEY = '*';
         public const char GRID_SEPARATOR = '|';
     }

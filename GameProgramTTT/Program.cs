@@ -12,7 +12,7 @@ class Program
         UI.ShowWelcomeMessage();
         char userInput = UI.GetuserInput();
 
-        if (userInput == Identifiers.USERLOWERKEY || userInput == Identifiers.USERUPERKEY)
+        if (userInput == Identifiers.USER_LOWER_KEY || userInput == Identifiers.USER_UPPER_KEY)
         {
 
             Console.WriteLine("Lets go on");
