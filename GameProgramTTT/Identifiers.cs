@@ -7,8 +7,6 @@
         public const int SECOND_GRID_INPUT = 1;
         public  const string COMPUTER_PLAY = "AI";
         public  const string HUMAN_PLAY = "You";
-        public  const int MIN_PLAYING_TIME = 2;
-        public  const int MAX_PLAYING_TIME = 5;
         public  const int GRID_SIZE = 3;
         public const char USERLOWERKEY = 'y';
         public const char USERUPERKEY = 'Y';

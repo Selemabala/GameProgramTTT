@@ -27,14 +27,6 @@ namespace GameProgramTTT
         }
 
         /// <summary>
-        /// A statement informing the user regarding the expected duration of the game
-        /// </summary>
-        public static void DisplayGametime()
-        {
-            Console.WriteLine($"The game will take between {Identifiers.MIN_PLAYING_TIME} to {Identifiers.MAX_PLAYING_TIME} minutes.");
-        }
-
-        /// <summary>
         /// A statement to inform the user that the game ends now
         /// </summary>
         public static void InformGameEnding()

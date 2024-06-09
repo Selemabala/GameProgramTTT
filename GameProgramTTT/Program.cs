@@ -11,7 +11,6 @@ class Program
         bool play = false; ;
 
         UI.ShowWelcomeMessage();
-        UI.DisplayGametime();
         char userInput = UI.GetuserInput();
 
         if (userInput == Identifiers.USERLOWERKEY || userInput == Identifiers.USERUPERKEY)
