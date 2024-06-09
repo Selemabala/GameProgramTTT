@@ -11,7 +11,7 @@ namespace GameProgramTTT
         /// </summary>
         public static void ShowWelcomeMessage()
         {
-            Console.WriteLine(Logic.ShowWelcomeWord());
+            Console.WriteLine("Hello welcome to play this game.");
             Console.WriteLine($"In this game you will play against an {Identifiers.COMPUTER_PLAY}.");
         }
 
@@ -78,6 +78,7 @@ namespace GameProgramTTT
             }
 
         }
+
         /// <summary>
         /// Asks suser who should make the first move
         /// </summary>

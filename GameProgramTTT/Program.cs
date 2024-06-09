@@ -28,7 +28,7 @@ class Program
         if (!play)
         {
             UI.InformGameEnding();
-            Environment.Exit(0);
+           
         }
         else
         {

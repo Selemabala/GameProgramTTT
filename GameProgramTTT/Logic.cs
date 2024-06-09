@@ -3,15 +3,6 @@ namespace GameProgramTTT
 {
     public static class Logic
     {
-        /// <summary>
-        /// A method which just returns a statement for welcoming the user 
-        /// </summary>
-        /// <returns>The welcome statement</returns>
-        public static string ShowWelcomeWord()
-        {
-            string john = "Hello welcome to play this game.";
-            return john;
-        }
 
         /// <summary>
         /// This method gets userinputer from the keyboard
