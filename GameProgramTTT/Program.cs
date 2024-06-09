@@ -8,7 +8,6 @@ class Program
     {
         char nextPlayer;
         char[,] grid = new char[Identifiers.GRID_SIZE, Identifiers.GRID_SIZE];
-        bool play = false; ;
 
         UI.ShowWelcomeMessage();
         char userInput = UI.GetuserInput();

@@ -169,7 +169,7 @@ namespace GameProgramTTT
         /// <param name="grid"></param>
         public static void PrintingResultsDiagnalValues(Char[,] grid)
         {
-            int i;
+            int i = 0;
             int AiMatchingDiagnal = 0;
             int HumanMatchingDiagnal = 0;
             int AiMatchingFromRight = 0;
