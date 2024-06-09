@@ -16,23 +16,15 @@ class Program
         if (userInput == Identifiers.USERLOWERKEY || userInput == Identifiers.USERUPERKEY)
         {
 
-            play = true;
+            Console.WriteLine("Lets go on");
         }
         else
         {
 
-            play = false;
-        }
-
-        if (!play)
-        {
             UI.InformGameEnding();
             return;
         }
-        else
-        {
-            Console.WriteLine("Lets go on");
-        }
+
 
         grid = Logic.CreateEmptyGrid();
 
