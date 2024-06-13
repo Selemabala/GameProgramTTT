@@ -15,13 +15,27 @@ namespace GameProgramTTT
             Console.WriteLine($"In this game you will play against an {Identifiers.COMPUTER_PLAY}.");
         }
 
+
+        /// <summary>
+        /// This method gets userinputer from the keyboard
+        /// </summary>
+        /// <param name="question">The question or statement to get a user input character</param>
+        /// <returns>The character needed from the Question</returns>
+        public static char GetUserAnswer(string question)
+        {
+            Console.WriteLine(question);
+            char userInput = Console.ReadKey().KeyChar;
+            return userInput;
+
+        }
+
         /// <summary>
         /// This method is for getting a userinput if the user wants to play or not
         /// </summary>
         /// <returns>The return is the character y for continuing to play or another character to exit</returns>
         public static char GetuserInput()
         {
-            char userInput = Logic.GetUserAnswer("Do you wish to play? Press y for yes and any key to exit");
+            char userInput = UI.GetUserAnswer("Do you wish to play? Press y for yes and any key to exit");
             Console.WriteLine();
             return userInput;
         }
@@ -79,7 +93,7 @@ namespace GameProgramTTT
         {
             while (true)
             {
-                char userChoice = Logic.GetUserAnswer($"You are given the option to choose who should start the game, press {Identifiers.MACHINE} for AI and  {Identifiers.HUMAN} for you");
+                char userChoice = UI.GetUserAnswer($"You are given the option to choose who should start the game, press {Identifiers.MACHINE} for AI and  {Identifiers.HUMAN} for you");
                 Console.WriteLine();
                 if (userChoice == Identifiers.HUMAN || userChoice == Identifiers.HUMAN_LOWER_KEY)
                 {

@@ -5,19 +5,6 @@ namespace GameProgramTTT
     {
 
         /// <summary>
-        /// This method gets userinputer from the keyboard
-        /// </summary>
-        /// <param name="question">The question or statement to get a user input character</param>
-        /// <returns>The character needed from the Question</returns>
-        public static char GetUserAnswer(string question)
-        {
-            Console.WriteLine(question);
-            char userInput = Console.ReadKey().KeyChar;
-            return userInput;
-
-        }
-
-        /// <summary>
         /// A method which creates an empty Grid of 3 x 3
         /// </summary>
         /// <returns> the 3x3 grid</returns>
