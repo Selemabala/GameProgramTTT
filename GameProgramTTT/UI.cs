@@ -35,7 +35,7 @@ namespace GameProgramTTT
         /// <returns>The return is the character y for continuing to play or another character to exit</returns>
         public static char GetuserInput()
         {
-            char userInput = UI.GetUserAnswer("Do you wish to play? Press y for yes and any key to exit");
+            char userInput = UI.GetUserAnswer($"Do you wish to play? Press {Identifiers.USER_LOWER_KEY} for yes and any key to exit");
             Console.WriteLine();
             return userInput;
         }
