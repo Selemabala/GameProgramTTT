@@ -29,7 +29,7 @@ namespace GameProgramTTT
         /// </summary>
         /// <param name="grid"></param>
         /// <returns>It return boolean true or false. If there is a winner it return true and if there no winner it return false.  </returns>
-        public static bool RevealHolizontalWins(Char[,] grid)
+        public static bool RevealHolizontalOrVerticalWins(Char[,] grid)
         {
             int i;
             int j;
