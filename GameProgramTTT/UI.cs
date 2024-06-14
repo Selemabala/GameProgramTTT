@@ -37,7 +37,8 @@ namespace GameProgramTTT
         {
             char userInput = UI.GetUserAnswer($"Do you wish to play? Press {Identifiers.USER_LOWER_KEY} for yes and any key to exit");
             Console.WriteLine();
-            return userInput;
+            char LowerKeyUserInput = char.ToLower(userInput);
+            return LowerKeyUserInput;
         }
 
         /// <summary>
@@ -95,13 +96,14 @@ namespace GameProgramTTT
             {
                 char userChoice = UI.GetUserAnswer($"You are given the option to choose who should start the game, press {Identifiers.MACHINE} for AI and  {Identifiers.HUMAN} for you");
                 Console.WriteLine();
-                if (userChoice == Identifiers.HUMAN || userChoice == Identifiers.HUMAN_LOWER_KEY)
+                char UpperKeyUserChoice = char.ToUpper(userChoice);
+                if (UpperKeyUserChoice == Identifiers.HUMAN)
                 {
                     Console.WriteLine("You will start the game");
                     return false;
                 }
 
-                if (userChoice == Identifiers.MACHINE || userChoice == Identifiers.MACHINE_LOWER_KEY)
+                if (UpperKeyUserChoice == Identifiers.MACHINE)
                 {
                     Console.WriteLine("The AI will start the game");
                     return true;
