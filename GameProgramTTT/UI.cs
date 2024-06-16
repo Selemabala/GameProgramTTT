@@ -237,6 +237,32 @@ namespace GameProgramTTT
             }
         }
 
+
+        /// <summary>
+        /// Thos method aims at validating the input if its an integer
+        /// </summary>
+        /// <param name="userInput">The input from the user in the console</param>
+        /// <returns></returns>
+        public static bool InputValidation(string userInput)
+           
+        {
+            bool inputSuccess = true;
+            int rowValue;
+            int columnValue;
+            userInput = Console.ReadLine();
+            inputSuccess = int.TryParse(userInput, out rowValue);
+            if(inputSuccess)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
         /// <summary>
         /// Method to get 2 numbers/coordinates from user where the user wants to place his symbol if the posisiton is valid
         /// </summary>
@@ -244,8 +270,8 @@ namespace GameProgramTTT
         /// <returns>list of 2 selected numbers</returns>
         public static void HumanPlaying(char[,] gridValue)
         {
-            int row;
-            int col;
+            int rowValue=0;
+            int colValue=0;
 
             Console.WriteLine();
             Console.WriteLine("Your move");
@@ -253,11 +279,9 @@ namespace GameProgramTTT
             {
                 while (true)
                 {
-                    bool rowSucess = true;
                     Console.WriteLine($"Enter a valid number for the row between {Identifiers.MIN_GRID_INPUT} and {Identifiers.MAX_GRID_INPUT}");
-                    string rowInput = Console.ReadLine();
-                    rowSucess = int.TryParse(rowInput, out row);
-                    if (rowSucess && row >= 0 && row <= Identifiers.MAX_GRID_INPUT)
+                    string userInput = Console.ReadLine();
+                    if (UI.InputValidation(userInput) && rowValue >= 0 && rowValue <= Identifiers.MAX_GRID_INPUT)
                     {
 
                         break;
@@ -272,9 +296,9 @@ namespace GameProgramTTT
                 {
                     bool columnSucess = true;
                     Console.WriteLine($"Enter a valid number for the column between {Identifiers.MIN_GRID_INPUT} and {Identifiers.MAX_GRID_INPUT}");
-                    string colInput = Console.ReadLine();
-                    columnSucess = int.TryParse(colInput, out col);
-                    if (columnSucess && col >= 0 && col <= Identifiers.MAX_GRID_INPUT)
+                    string userInput = Console.ReadLine();
+                    columnSucess = int.TryParse(userInput, out colValue);
+                    if (UI.InputValidation(userInput) && colValue >= 0 && colValue <= Identifiers.MAX_GRID_INPUT)
                     {
                         break;
                     }
@@ -284,10 +308,10 @@ namespace GameProgramTTT
                     }
                 }
 
-                if (gridValue[row, col] == Identifiers.CELL_KEY)
+                if (gridValue[rowValue, colValue] == Identifiers.CELL_KEY)
 
                 {
-                    gridValue[row, col] = Identifiers.HUMAN;
+                    gridValue[rowValue, colValue] = Identifiers.HUMAN;
                     return;
                 }
                 else
