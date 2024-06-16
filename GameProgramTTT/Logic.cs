@@ -66,23 +66,11 @@ namespace GameProgramTTT
                 }
 
 
-                if (machineHolizontalWin == Identifiers.GRID_SIZE)
+                if (machineHolizontalWin == Identifiers.GRID_SIZE || humanHolizontalWin == Identifiers.GRID_SIZE || machineVerticalWin == Identifiers.GRID_SIZE || humanVerticalWin == Identifiers.GRID_SIZE)
                 {
                     return true;
                 }
-                if (humanHolizontalWin == Identifiers.GRID_SIZE)
-                {
-                    return true;
-                }
-
-                if (machineVerticalWin == Identifiers.GRID_SIZE)
-                {
-                    return true;
-                }
-                if (humanVerticalWin == Identifiers.GRID_SIZE)
-                {
-                    return true;
-                }
+             
 
             }
             return false;
