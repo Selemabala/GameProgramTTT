@@ -24,6 +24,26 @@ namespace GameProgramTTT
             return grid;
         }
 
+
+        /// <summary>
+        /// Thos method aims at validating the input if its an integer
+        /// </summary>
+        /// <param name="userInput">The input from the user in the console</param>
+        /// <returns></returns>
+        public static bool InputValidation(string userInput)
+
+        {
+            bool inputSuccess = int.TryParse(userInput, out int inputValue);
+            if (inputSuccess)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         /// <summary>
         /// This method is specifically for displaying the winner. The loop will run and if characters appear 3 times  straight then the method returns true.
         /// </summary>
