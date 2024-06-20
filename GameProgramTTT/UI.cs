@@ -237,6 +237,50 @@ namespace GameProgramTTT
             }
         }
 
+        /// <summary>
+        /// This method seeks to get a valid number from the user which will be a first coordnate, specifically its for the row position
+        /// </summary>
+        /// <returns></returns>
+        public static int EnteringFirstCordinate()
+        {
+            while (true)
+            {
+                Console.WriteLine($"Enter a valid number for the row between {Identifiers.MIN_GRID_INPUT} and {Identifiers.MAX_GRID_INPUT}");
+                string userInput = Console.ReadLine();
+                if (Logic.InputValidation(userInput) && int.TryParse(userInput, out int firstNumber) && firstNumber >= 0 && firstNumber <= Identifiers.MAX_GRID_INPUT)
+                {
+
+                    return firstNumber;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid number");
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// This method seeks to get a valid number from the user which will be a second coordnate, specifically its for the column position
+        /// </summary>
+        /// <returns></returns>
+        public static int EnteringSecondCordinate()
+        {
+            while (true)
+            {
+                Console.WriteLine($"Enter a valid number for the column between {Identifiers.MIN_GRID_INPUT} and {Identifiers.MAX_GRID_INPUT}");
+                string userInput = Console.ReadLine();
+                if (Logic.InputValidation(userInput) && int.TryParse(userInput, out int secondNumber) && secondNumber >= 0 && secondNumber <= Identifiers.MAX_GRID_INPUT)
+                {
+
+                    return secondNumber;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid number");
+                }
+            }
+        }
 
         /// <summary>
         /// Method to get 2 numbers/coordinates from user where the user wants to place his symbol if the posisiton is valid
@@ -245,42 +289,12 @@ namespace GameProgramTTT
         /// <returns>list of 2 selected numbers</returns>
         public static void HumanPlaying(char[,] gridValue)
         {
-            int rowValue;
-            int colValue;
-
             Console.WriteLine();
             Console.WriteLine("Your move");
             while (true)
             {
-                while (true)
-                {
-                    Console.WriteLine($"Enter a valid number for the row between {Identifiers.MIN_GRID_INPUT} and {Identifiers.MAX_GRID_INPUT}");
-                    string userInput = Console.ReadLine();
-                    if (Logic.InputValidation(userInput) && int.TryParse(userInput, out rowValue) && rowValue >= 0 && rowValue <= Identifiers.MAX_GRID_INPUT)
-                    {
-
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Please enter a valid number");
-                    }
-                }
-
-                while (true)
-                {
-                    Console.WriteLine($"Enter a valid number for the column between {Identifiers.MIN_GRID_INPUT} and {Identifiers.MAX_GRID_INPUT}");
-                    string userInput = Console.ReadLine();
-                    if (Logic.InputValidation(userInput) && int.TryParse(userInput, out colValue) && colValue >= 0 && colValue <= Identifiers.MAX_GRID_INPUT)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Please enter a valid number");
-                    }
-                }
-
+                int rowValue = EnteringFirstCordinate();
+                int colValue = EnteringSecondCordinate();
                 if (gridValue[rowValue, colValue] == Identifiers.CELL_KEY)
 
                 {
@@ -303,17 +317,15 @@ namespace GameProgramTTT
             Random random = new Random();
             int row = 0;
             int col = 0;
-            bool correctMove = false;
             Console.WriteLine();
             Console.WriteLine("The AI move");
-            while (!correctMove)
+            while (true)
             {
                 row = random.Next(0, Identifiers.GRID_SIZE);
                 col = random.Next(0, Identifiers.GRID_SIZE);
                 if (aivalues[row, col] == Identifiers.CELL_KEY)
                 {
                     aivalues[row, col] = Identifiers.MACHINE;
-                    correctMove = true;
                     return;
                 }
             }
