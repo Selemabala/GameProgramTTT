@@ -10,7 +10,7 @@ class Program
         char[,] grid = new char[Identifiers.GRID_SIZE, Identifiers.GRID_SIZE];
 
         UI.ShowWelcomeMessage();
-        char userInput = UI.GetuserInput();
+        char userInput = UI.GetUserInput();
 
         if (userInput == Identifiers.USER_LOWER_KEY)
         {

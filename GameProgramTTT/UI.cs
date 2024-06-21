@@ -33,12 +33,11 @@ namespace GameProgramTTT
         /// This method is for getting a userinput if the user wants to play or not
         /// </summary>
         /// <returns>The return is the character y for continuing to play or another character to exit</returns>
-        public static char GetuserInput()
+        public static char GetUserInput()
         {
-            char userInput = UI.GetUserAnswer($"Do you wish to play? Press {Identifiers.USER_LOWER_KEY} for yes and any key to exit");
+            char userInput = GetUserAnswer($"Do you wish to play? Press {Identifiers.USER_LOWER_KEY} for yes and any key to exit");
             Console.WriteLine();
-            char LowerKeyUserInput = char.ToLower(userInput);
-            return LowerKeyUserInput;
+            return char.ToLower(userInput);
         }
 
         /// <summary>
