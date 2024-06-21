@@ -11,13 +11,11 @@ namespace GameProgramTTT
         public static char[,] CreateEmptyGrid()
         {
             char[,] grid = new char[Identifiers.GRID_SIZE, Identifiers.GRID_SIZE];
-            int cellGrid = 0;
-            int cellAdded = 0;
-            for (cellGrid = 0; cellGrid <= Identifiers.MAX_GRID_INPUT; cellGrid++)
+            for (int i = 0; i <= Identifiers.MAX_GRID_INPUT; i++)
             {
-                for (cellAdded = 0; cellAdded <= Identifiers.MAX_GRID_INPUT; cellAdded++)
+                for (int j = 0; j <= Identifiers.MAX_GRID_INPUT; j++)
                 {
-                    grid[cellGrid, cellAdded] = Identifiers.CELL_KEY;
+                    grid[i, j] = Identifiers.CELL_KEY;
                 }
             }
 
