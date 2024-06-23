@@ -251,10 +251,9 @@ namespace GameProgramTTT
 
                     return firstNumber;
                 }
-                else
-                {
-                    Console.WriteLine("Please enter a valid number");
-                }
+
+                Console.WriteLine("Please enter a valid number");
+
             }
         }
 
@@ -274,10 +273,9 @@ namespace GameProgramTTT
 
                     return secondNumber;
                 }
-                else
-                {
-                    Console.WriteLine("Please enter a valid number");
-                }
+
+                Console.WriteLine("Please enter a valid number");
+
             }
         }
 
@@ -300,10 +298,9 @@ namespace GameProgramTTT
                     gridValue[rowValue, colValue] = Identifiers.HUMAN;
                     return;
                 }
-                else
-                {
-                    Console.WriteLine($"That  was an invalid move, try again ");
-                }
+
+                Console.WriteLine($"That  was an invalid move, try again ");
+
             }
         }
 
