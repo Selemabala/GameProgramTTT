@@ -53,17 +53,15 @@ namespace GameProgramTTT
         /// </summary>
         /// <param name="grid"></param>
         /// <returns>It return boolean true or false. If there is a winner it return true and if there no winner it return false.  </returns>
-        public static bool RevealHolizontalOrVerticalWins(Char[,] grid)
+        public static bool RevealHorizontalOrVerticalWins(Char[,] grid)
         {
-            int i;
-            int j;
-            for (i = 0; i <= Identifiers.MAX_GRID_INPUT; i++)
+            for (int i = 0; i <= Identifiers.MAX_GRID_INPUT; i++)
             {
                 int machineHolizontalWin = 0;
                 int humanHolizontalWin = 0;
                 int machineVerticalWin = 0;
                 int humanVerticalWin = 0;
-                for (j = 0; j <= Identifiers.MAX_GRID_INPUT; j++)
+                for (int j = 0; j <= Identifiers.MAX_GRID_INPUT; j++)
                 {
 
                     if (Identifiers.MACHINE == grid[i, j])

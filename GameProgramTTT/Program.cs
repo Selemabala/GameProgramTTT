@@ -41,8 +41,8 @@ class Program
                 UI.HumanPlaying(grid);
                 nextPlayer = Identifiers.MACHINE;
                 UI.DisplayingWholeGrid(grid);
-                Logic.RevealHolizontalOrVerticalWins(grid);
-                if (Logic.RevealHolizontalOrVerticalWins(grid))
+                Logic.RevealHorizontalOrVerticalWins(grid);
+                if (Logic.RevealHorizontalOrVerticalWins(grid))
                 {
                     UI.PrintHolizontalWins(grid);
                     break;
@@ -60,8 +60,8 @@ class Program
                 UI.AiPlaying(grid);
                 nextPlayer = Identifiers.HUMAN;
                 UI.DisplayingWholeGrid(grid);
-                Logic.RevealHolizontalOrVerticalWins(grid);
-                if (Logic.RevealHolizontalOrVerticalWins(grid))
+                Logic.RevealHorizontalOrVerticalWins(grid);
+                if (Logic.RevealHorizontalOrVerticalWins(grid))
                 {
                     UI.PrintHolizontalWins(grid);
                     break;
