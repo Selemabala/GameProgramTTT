@@ -31,15 +31,8 @@ namespace GameProgramTTT
         public static bool InputValidation(string userInput)
 
         {
-            bool inputSuccess = int.TryParse(userInput, out int inputValue);
-            if (inputSuccess)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            bool inputSuccess = int.TryParse(userInput, out int _);
+            return inputSuccess;
         }
 
         public static char NextPlayer()
