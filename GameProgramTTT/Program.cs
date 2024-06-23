@@ -6,7 +6,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        char nextPlayer;
         char[,] grid = new char[Identifiers.GRID_SIZE, Identifiers.GRID_SIZE];
 
         UI.ShowWelcomeMessage();
@@ -31,16 +30,10 @@ class Program
         UI.DisplayingWholeGrid(grid);
 
 
-        if (!UI.GetGamePlayer())
-        {
-            nextPlayer = Identifiers.HUMAN;
-        }
-        else
-        {
-            nextPlayer = Identifiers.MACHINE;
-        }
+        UI.GetGamePlayer();
 
-
+        char nextPlayer = Logic.NextPlayer();
+       
         while (true)
         {
             if (nextPlayer == Identifiers.HUMAN)
