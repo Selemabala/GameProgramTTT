@@ -29,11 +29,11 @@ class Program
 
         UI.DisplayingWholeGrid(grid);
 
+        char player = UI.GetGamePlayer();
 
-        UI.GetGamePlayer();
+        char nextPlayer = Logic.NextPlayer(player);
+        bool winingsHorizontalAndvertical = Logic.RevealHorizontalOrVerticalWins(grid);
 
-        char nextPlayer = Logic.NextPlayer();
-       
         while (true)
         {
             if (nextPlayer == Identifiers.HUMAN)
@@ -42,7 +42,7 @@ class Program
                 nextPlayer = Identifiers.MACHINE;
                 UI.DisplayingWholeGrid(grid);
                 Logic.RevealHorizontalOrVerticalWins(grid);
-                if (Logic.RevealHorizontalOrVerticalWins(grid))
+                if (winingsHorizontalAndvertical)
                 {
                     UI.PrintHolizontalWins(grid);
                     break;

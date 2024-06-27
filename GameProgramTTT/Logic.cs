@@ -35,16 +35,15 @@ namespace GameProgramTTT
             return inputSuccess;
         }
 
-        public static char NextPlayer()
+        public static char NextPlayer(char nextPlayer)
         {
-
-            if (UI.GetGamePlayer())
+            if (nextPlayer==Identifiers.HUMAN)
             {
-                return Identifiers.MACHINE;
+                return Identifiers.HUMAN;
             }
             else
             {
-                return  Identifiers.HUMAN;
+                return  Identifiers.MACHINE;
             }
         }
 

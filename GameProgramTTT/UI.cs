@@ -86,11 +86,12 @@ namespace GameProgramTTT
         }
 
         /// <summary>
-        /// Asks suser who should make the first move
+        /// Asks user who should make the first move
         /// </summary>
-        /// <returns>true if AI, false if human</returns>
-        public static bool GetGamePlayer()
+        /// <returns>the char nextPlayer; H for Human and A for AI</returns>
+        public static char GetGamePlayer()
         {
+          
             while (true)
             {
                 char userChoice = UI.GetUserAnswer($"You are given the option to choose who should start the game, press {Identifiers.MACHINE} for AI and  {Identifiers.HUMAN} for you");
@@ -99,18 +100,23 @@ namespace GameProgramTTT
                 if (UpperKeyUserChoice == Identifiers.HUMAN)
                 {
                     Console.WriteLine("You will start the game");
-                    return false;
+                    char nextPlayer = Identifiers.HUMAN;
+                    return nextPlayer;
                 }
 
                 if (UpperKeyUserChoice == Identifiers.MACHINE)
                 {
                     Console.WriteLine("The AI will start the game");
-                    return true;
+                    char nextPlayer = Identifiers.MACHINE;
+                    return nextPlayer;
                 }
                 Console.WriteLine("Enter a valid key");
             }
 
         }
+
+
+
 
         /// <summary>
         /// The method prints the statement where there is a winner
