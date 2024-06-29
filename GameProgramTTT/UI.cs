@@ -69,7 +69,7 @@ namespace GameProgramTTT
         /// This method adds some lines and dots to make the grid well displayable
         /// </summary>
         /// <param name="john">the parameter is the 3x3 grid</param>
-        public static void DisplayingWholeGrid(char[,] john)
+        public static void DisplayWholeGrid(char[,] grid)
         {
             Console.WriteLine("..........");
             for (int gridLine = 0; gridLine <= Identifiers.MAX_GRID_INPUT; gridLine++)
@@ -77,7 +77,7 @@ namespace GameProgramTTT
                 Console.Write($"{Identifiers.GRID_SEPARATOR}");
                 for (int cellInGrid = 0; cellInGrid <= Identifiers.MAX_GRID_INPUT; cellInGrid++)
                 {
-                    Console.Write($"{john[gridLine, cellInGrid]} {Identifiers.GRID_SEPARATOR}");
+                    Console.Write($"{grid[gridLine, cellInGrid]} {Identifiers.GRID_SEPARATOR}");
                 }
                 Console.WriteLine();
                 Console.WriteLine("..........");

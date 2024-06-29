@@ -27,7 +27,7 @@ class Program
         grid = Logic.CreateEmptyGrid();
 
 
-        UI.DisplayingWholeGrid(grid);
+        UI.DisplayWholeGrid(grid);
 
         char player = UI.GetGamePlayer();
 
@@ -40,7 +40,7 @@ class Program
             {
                 UI.HumanPlaying(grid);
                 nextPlayer = Identifiers.MACHINE;
-                UI.DisplayingWholeGrid(grid);
+                UI.DisplayWholeGrid(grid);
                 if (winingsHorizontalAndvertical)
                 {
                     UI.PrintHolizontalWins(grid);
@@ -57,7 +57,7 @@ class Program
             {
                 UI.AiPlaying(grid);
                 nextPlayer = Identifiers.HUMAN;
-                UI.DisplayingWholeGrid(grid);
+                UI.DisplayWholeGrid(grid);
                 if (Logic.RevealHorizontalOrVerticalWins(grid))
                 {
                     UI.PrintHolizontalWins(grid);
