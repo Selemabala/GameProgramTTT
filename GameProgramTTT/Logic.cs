@@ -35,17 +35,6 @@ namespace GameProgramTTT
             return inputSuccess;
         }
 
-        public static char NextPlayer(char nextPlayer)
-        {
-            if (nextPlayer==Identifiers.HUMAN)
-            {
-                return Identifiers.HUMAN;
-            }
-            else
-            {
-                return  Identifiers.MACHINE;
-            }
-        }
 
         /// <summary>
         /// This method is specifically for displaying the winner. The loop will run and if characters appear 3 times  straight then the method returns true.

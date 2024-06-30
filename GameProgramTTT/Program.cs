@@ -29,9 +29,8 @@ class Program
 
         UI.DisplayWholeGrid(grid);
 
-        char player = UI.GetGamePlayer();
+        char nextPlayer = UI.GetGamePlayer();
 
-        char nextPlayer = Logic.NextPlayer(player);
         bool winingsHorizontalAndvertical = Logic.RevealHorizontalOrVerticalWins(grid);
 
         while (true)
