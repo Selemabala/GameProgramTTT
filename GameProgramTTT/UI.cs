@@ -94,7 +94,7 @@ namespace GameProgramTTT
           
             while (true)
             {
-                char userChoice = UI.GetUserAnswer($"You are given the option to choose who should start the game, press {Identifiers.MACHINE} for AI and  {Identifiers.HUMAN} for you");
+                char userChoice = GetUserAnswer($"You are given the option to choose who should start the game, press {Identifiers.MACHINE} for AI and  {Identifiers.HUMAN} for you");
                 Console.WriteLine();
                 char UpperKeyUserChoice = char.ToUpper(userChoice);
                 if (UpperKeyUserChoice == Identifiers.HUMAN)
